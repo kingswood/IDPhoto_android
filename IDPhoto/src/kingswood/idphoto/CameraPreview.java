@@ -22,7 +22,7 @@ public class CameraPreview extends SurfaceView implements
 	private Size mPreviewSize;
 	
 	private int viewWidth = 500;
-	private int viewHeight = 500;
+	private int viewHeight = 700;
 
 	public CameraPreview(Context context, Camera camera) {
 		super(context);

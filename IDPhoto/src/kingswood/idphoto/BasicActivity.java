@@ -36,6 +36,7 @@ public class BasicActivity extends Activity {
 		// get x and y DPI of the device
 		initialDpi();
 		
+		/*
 		// get button instance
 		btn1 = (Button)findViewById(R.id.btnChangeSize);
 		btn1.setOnClickListener(new OnClickListener() {
@@ -48,7 +49,8 @@ public class BasicActivity extends Activity {
 		
 		DisplayMetrics metrics = getResources().getDisplayMetrics();
 		int densityDpi = (int)(metrics.density * 160f);
-		AppLogger.log("densityDpi: " + densityDpi);
+		AppLogger.log("densityDpi: " + densityDpi);*/
+		
 	}
 	
 	private void initialDpi(){

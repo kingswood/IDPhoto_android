@@ -28,11 +28,10 @@ public final class R {
     }
     public static final class drawable {
         public static final int background=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int button=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f090003;
-        public static final int btnChangeSize=0x7f090002;
         public static final int camera_preview=0x7f090001;
         public static final int root_layout=0x7f090000;
     }
@@ -43,13 +42,10 @@ public final class R {
         public static final int basic=0x7f080000;
     }
     public static final class string {
-        public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
-        public static final int btn_change_size=0x7f060003;
-        public static final int button_retry=0x7f060006;
-        public static final int button_save=0x7f060005;
-        public static final int one_inch_button=0x7f060002;
-        public static final int take_photo_button=0x7f060004;
+        public static final int btn_change_size=0x7f060001;
+        public static final int btn_review_photo=0x7f060003;
+        public static final int btn_take_photo=0x7f060002;
     }
     public static final class style {
         /** 

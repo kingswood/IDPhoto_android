@@ -2,11 +2,8 @@
 <resources>
 
     <string name="app_name">IDPhoto</string>
-    <string name="action_settings">Settings</string>
-    <string name="one_inch_button">1 INCH 2.5×3.5 CM</string>
-    <string name="btn_change_size">Change Photo Size</string>
-	<string name="take_photo_button">Take photo</string>
-	<string name="button_save">Save</string>
-	<string name="button_retry">Retry</string>
+    <string name="btn_change_size">Define Photo Size</string>
+    <string name="btn_take_photo">Take Photo</string>
+    <string name="btn_review_photo">Preview Photos</string>
 	
 </resources>
