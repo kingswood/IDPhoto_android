@@ -5,5 +5,8 @@
     <string name="btn_change_size">Define Photo Size</string>
     <string name="btn_take_photo">Take Photo</string>
     <string name="btn_review_photo">Preview Photos</string>
+    
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">Cancel</string>
 	
 </resources>

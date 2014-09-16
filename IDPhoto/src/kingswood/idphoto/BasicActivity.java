@@ -2,6 +2,7 @@ package kingswood.idphoto;
 
 import kingswood.idphoto.log.AppLogger;
 import android.app.Activity;
+import android.content.Intent;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -17,7 +18,7 @@ public class BasicActivity extends Activity {
 
 	private Camera mCamera = null;
 	private CameraPreview mCameraPreview = null;
-	private Button btn1 = null;
+	private Button btnChooseSize = null;
 	private float xdpi;
 	private float ydpi;
 
@@ -36,6 +37,9 @@ public class BasicActivity extends Activity {
 		// get x and y DPI of the device
 		initialDpi();
 		
+		// add button listeners
+		setBtnListeners();
+		
 		/*
 		// get button instance
 		btn1 = (Button)findViewById(R.id.btnChangeSize);
@@ -50,6 +54,27 @@ public class BasicActivity extends Activity {
 		DisplayMetrics metrics = getResources().getDisplayMetrics();
 		int densityDpi = (int)(metrics.density * 160f);
 		AppLogger.log("densityDpi: " + densityDpi);*/
+		
+	}
+	
+	private void setBtnListeners(){
+		
+		btnChooseSize = (Button)findViewById(R.id.btn_choosesize);
+		btnChooseSize.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				
+				//finish(); //TODO what's this for?
+				
+				Intent intent = new Intent();
+				intent.setClass(getBaseContext(), ChooseSizeActivity.class);
+				startActivity(intent);
+				
+				overridePendingTransition(R.anim.right_in, R.anim.left_out);
+				
+			}
+		});
 		
 	}
 	
