@@ -35,10 +35,10 @@ public class BasicActivity extends Activity {
 		previewFrame.addView(mCameraPreview);
 		
 		// get x and y DPI of the device
-		initialDpi();
+		//initialDpi();
 		
 		// add button listeners
-		setBtnListeners();
+		registerBtnListeners();
 		
 		/*
 		// get button instance
@@ -57,7 +57,21 @@ public class BasicActivity extends Activity {
 		
 	}
 	
-	private void setBtnListeners(){
+	protected void onResume(){
+		
+		super.onResume();
+		
+		initCameraInstance();
+		
+		mCameraPreview = new CameraPreview(this, mCamera);
+		FrameLayout previewFrame = (FrameLayout) findViewById(R.id.camera_preview);
+		previewFrame.addView(mCameraPreview);
+		
+		
+		AppLogger.log("calling onResume method");
+	}
+	
+	private void registerBtnListeners(){
 		
 		btnChooseSize = (Button)findViewById(R.id.btn_choosesize);
 		btnChooseSize.setOnClickListener(new OnClickListener() {
@@ -65,7 +79,9 @@ public class BasicActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				
-				//finish(); //TODO what's this for?
+				
+				mCamera.stopPreview();
+				finish(); //TODO what's this for?
 				
 				Intent intent = new Intent();
 				intent.setClass(getBaseContext(), ChooseSizeActivity.class);

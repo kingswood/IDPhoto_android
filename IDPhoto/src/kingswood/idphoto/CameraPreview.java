@@ -110,6 +110,16 @@ public class CameraPreview extends SurfaceView implements
 		
 		AppLogger.log("Calling onMeasure method.");
 		
+		if(null == mCamera){
+			try {
+				mCamera = Camera.open(); // attempt to get a Camera instance
+			} catch (Exception e) {
+				e.printStackTrace();
+				AppLogger.log(e.getMessage());
+				// Camera is not available (in use or does not exist)
+			}
+		}
+		
 		mSupportedPreviewSizes = mCamera.getParameters().getSupportedPreviewSizes();
 		
 		final int width = resolveSize(getSuggestedMinimumWidth(),

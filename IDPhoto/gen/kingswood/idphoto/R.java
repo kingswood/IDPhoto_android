@@ -38,6 +38,7 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
+        public static final int btn_cancel=0x7f0a0003;
         public static final int btn_choosesize=0x7f0a0002;
         public static final int camera_preview=0x7f0a0001;
         public static final int root_layout=0x7f0a0000;
