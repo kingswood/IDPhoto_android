@@ -27,7 +27,7 @@ public class ChooseSizeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choosesize);
 		
-		addSelectiveList(getApplicationContext());
+		//addSelectiveList(getApplicationContext());
 		
 		registerBtnListeners();
 

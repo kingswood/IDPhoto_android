@@ -8,5 +8,9 @@
     
     <string name="btn_ok">OK</string>
     <string name="btn_cancel">Cancel</string>
+    
+    <string name="btn_1_inch">1 INCH - 2.5cm X 3.5cm</string>
+    <string name="btn_2_inch">2 INCH - 3.5cm X 4.9cm</string>
+    <string name="btn_customize_inch">Customize size</string>
 	
 </resources>
