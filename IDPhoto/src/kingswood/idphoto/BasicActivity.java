@@ -80,12 +80,12 @@ public class BasicActivity extends Activity {
 			public void onClick(View arg0) {
 				
 				
-				mCamera.stopPreview();
-				finish(); //TODO what's this for?
-				
 				Intent intent = new Intent();
 				intent.setClass(getBaseContext(), ChooseSizeActivity.class);
 				startActivity(intent);
+				
+				//release the camera, it will open the camera again when the activity is activated
+				mCamera.release();
 				
 				overridePendingTransition(R.anim.right_in, R.anim.left_out);
 				
