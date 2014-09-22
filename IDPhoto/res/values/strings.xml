@@ -9,8 +9,15 @@
     <string name="btn_ok">OK</string>
     <string name="btn_cancel">Cancel</string>
     
-    <string name="btn_1_inch">1 INCH - 2.5cm X 3.5cm</string>
-    <string name="btn_2_inch">2 INCH - 3.5cm X 4.9cm</string>
+    <string name="btn_1_inch">1 INCH</string>
+    <string name="btn_1_inch_2.5x3.5">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u00202.5cm X 3.5cm</string> 
+    <string name="btn_2_inch">2 INCH</string>
+    <string name="btn_2_inch_3.5x4.9">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u00203.5cm X 4.9cm</string> 
     <string name="btn_customize_inch">Customize size</string>
+    
+    <string name="width">WIDTH</string>
+    <string name="height">HEIGHT</string>
+    <string name="x">X</string>
+    
 	
 </resources>

@@ -19,8 +19,10 @@ public final class R {
     public static final class color {
         public static final int background_dark_gray=0x7f050001;
         public static final int background_gray=0x7f050002;
+        public static final int background_gray_80percent_transparent=0x7f050004;
         public static final int background_light_gray=0x7f050003;
         public static final int gray_99Transparent=0x7f050000;
+        public static final int white=0x7f050005;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -38,11 +40,17 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int btn_cancel=0x7f0a0004;
+        public static final int btn_1inch=0x7f0a0004;
+        public static final int btn_2inch=0x7f0a0005;
+        public static final int btn_cancel=0x7f0a000a;
         public static final int btn_choosesize=0x7f0a0002;
+        public static final int btn_customize_size=0x7f0a0006;
+        public static final int btn_ok=0x7f0a0009;
         public static final int camera_preview=0x7f0a0001;
         public static final int layout_choose_size=0x7f0a0003;
         public static final int root_layout=0x7f0a0000;
+        public static final int text_height=0x7f0a0008;
+        public static final int text_width=0x7f0a0007;
     }
     public static final class layout {
         public static final int activity_basic=0x7f030000;
@@ -54,13 +62,18 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f070000;
         public static final int btn_1_inch=0x7f070006;
-        public static final int btn_2_inch=0x7f070007;
+        public static final int btn_1_inch_2_5x3_5=0x7f070007;
+        public static final int btn_2_inch=0x7f070008;
+        public static final int btn_2_inch_3_5x4_9=0x7f070009;
         public static final int btn_cancel=0x7f070005;
         public static final int btn_change_size=0x7f070001;
-        public static final int btn_customize_inch=0x7f070008;
+        public static final int btn_customize_inch=0x7f07000a;
         public static final int btn_ok=0x7f070004;
         public static final int btn_review_photo=0x7f070003;
         public static final int btn_take_photo=0x7f070002;
+        public static final int height=0x7f07000c;
+        public static final int width=0x7f07000b;
+        public static final int x=0x7f07000d;
     }
     public static final class style {
         /** 

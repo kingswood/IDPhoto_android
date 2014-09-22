@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import kingswood.idphoto.log.AppLogger;
+import kingswood.idphoto.util.DimensionConvertor;
 
 import android.content.Context;
 import android.hardware.Camera;
@@ -137,8 +138,16 @@ public class CameraPreview extends SurfaceView implements
 		AppLogger.log("mPreviewSize.width: " + mPreviewSize.width);
 		AppLogger.log("mPreviewSize.height: " + mPreviewSize.height);
 		
+		if(Runtime.CAMERA_PREVIEW_WIDTH > 0 && Runtime.CAMERA_PREVIEW_HEIGHT > 0){
+			
+			int tmpWidth = (int)DimensionConvertor.convertCMToDpi(Runtime.CAMERA_PREVIEW_WIDTH);
+			int tmpHeight = (int)DimensionConvertor.convertCMToDpi(Runtime.CAMERA_PREVIEW_HEIGHT);
+			
+			setMeasuredDimension(tmpWidth, tmpHeight);
+			
+		}
 		
-		setMeasuredDimension(viewWidth, viewHeight);
+		//setMeasuredDimension(viewWidth, viewHeight);
 	}
 	
 	

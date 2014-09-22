@@ -19,8 +19,6 @@ public class BasicActivity extends Activity {
 	private Camera mCamera = null;
 	private CameraPreview mCameraPreview = null;
 	private Button btnChooseSize = null;
-	private float xdpi;
-	private float ydpi;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +33,7 @@ public class BasicActivity extends Activity {
 		previewFrame.addView(mCameraPreview);
 		
 		// get x and y DPI of the device
-		//initialDpi();
+		initialDpi();
 		
 		// add button listeners
 		registerBtnListeners();
@@ -98,17 +96,17 @@ public class BasicActivity extends Activity {
 		AppLogger.log("initialDpi()...");
 		DisplayMetrics dm = new DisplayMetrics();
 	    getWindowManager().getDefaultDisplay().getMetrics(dm);
-	    xdpi = dm.xdpi;
-	    ydpi = dm.ydpi;
-	    AppLogger.log("xdpi: " + xdpi + " ydpi: " + ydpi);
+	    Runtime.X_DPI = dm.xdpi;
+	    Runtime.Y_DPI = dm.ydpi;
+	    AppLogger.log("xdpi: " + Runtime.X_DPI + " ydpi: " + Runtime.Y_DPI);
 	}
 	
-	private void changeCameraViewSize(double widthInCM, double heightInCM){
+	/*private void changeCameraViewSize(float widthInCM, float heightInCM){
 		
 		AppLogger.log("Changing camera view size to : " + widthInCM + " cm X " + heightInCM + " cm");
 		
-		double widthInPixels = xdpi * widthInCM / 2.54;
-		double heightInPixels = ydpi * heightInCM / 2.54;
+		double widthInPixels = Runtime.X_DPI * widthInCM / 2.54;
+		double heightInPixels = Runtime.Y_DPI * heightInCM / 2.54;
 		
 		mCameraPreview.setViewWidth((int)widthInPixels);
 		mCameraPreview.setViewHeight((int)heightInPixels);
@@ -124,7 +122,7 @@ public class BasicActivity extends Activity {
         mCameraPreview.setLayoutParams(params);
 		
 		//frameLayout.invalidate();
-	}
+	}*/
 
 	/*private void printScreenDimenssion() {
 		WindowManager windowManager = getWindowManager();
