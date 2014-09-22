@@ -38,19 +38,21 @@ public final class R {
         public static final int background=0x7f020000;
         public static final int button=0x7f020001;
         public static final int ic_launcher=0x7f020002;
+        public static final int take_photo_icon=0x7f020003;
     }
     public static final class id {
-        public static final int btn_1inch=0x7f0a0004;
-        public static final int btn_2inch=0x7f0a0005;
-        public static final int btn_cancel=0x7f0a000a;
+        public static final int btn_1inch=0x7f0a0005;
+        public static final int btn_2inch=0x7f0a0006;
+        public static final int btn_cancel=0x7f0a000b;
         public static final int btn_choosesize=0x7f0a0002;
-        public static final int btn_customize_size=0x7f0a0006;
-        public static final int btn_ok=0x7f0a0009;
+        public static final int btn_customize_size=0x7f0a0007;
+        public static final int btn_ok=0x7f0a000a;
+        public static final int btn_take_photo=0x7f0a0003;
         public static final int camera_preview=0x7f0a0001;
-        public static final int layout_choose_size=0x7f0a0003;
+        public static final int layout_choose_size=0x7f0a0004;
         public static final int root_layout=0x7f0a0000;
-        public static final int text_height=0x7f0a0008;
-        public static final int text_width=0x7f0a0007;
+        public static final int text_height=0x7f0a0009;
+        public static final int text_width=0x7f0a0008;
     }
     public static final class layout {
         public static final int activity_basic=0x7f030000;
