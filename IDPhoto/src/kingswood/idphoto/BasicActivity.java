@@ -38,32 +38,29 @@ public class BasicActivity extends Activity {
 		// add button listeners
 		registerBtnListeners();
 
-		/*
-		 * // get button instance btn1 =
-		 * (Button)findViewById(R.id.btnChangeSize); btn1.setOnClickListener(new
-		 * OnClickListener() {
-		 * 
-		 * @Override public void onClick(View v) { changeCameraViewSize(2.5,
-		 * 3.5); } });
-		 * 
-		 * DisplayMetrics metrics = getResources().getDisplayMetrics(); int
-		 * densityDpi = (int)(metrics.density * 160f);
-		 * AppLogger.log("densityDpi: " + densityDpi);
-		 */
-
+	}
+	
+	@Override
+	protected void onPause(){
+		AppLogger.log("calling BasicActivity.onPause() method");
+		
+		super.onPause();
+		
+		mCamera.release();
 	}
 
+	@Override
 	protected void onResume() {
 
+		AppLogger.log("calling onResume method");
+		
 		super.onResume();
 
-		initCameraInstance();
+		//initCameraInstance();
 
 		mCameraPreview = new CameraPreview(this, mCamera);
 		FrameLayout previewFrame = (FrameLayout) findViewById(R.id.camera_preview);
 		previewFrame.addView(mCameraPreview);
-
-		AppLogger.log("calling onResume method");
 	}
 
 	private void registerBtnListeners() {
@@ -77,10 +74,6 @@ public class BasicActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(getBaseContext(), ChooseSizeActivity.class);
 				startActivity(intent);
-
-				// release the camera, it will open the camera again when the
-				// activity is activated
-				//mCamera.release();
 
 				overridePendingTransition(R.anim.right_in, R.anim.left_out);
 
@@ -101,6 +94,8 @@ public class BasicActivity extends Activity {
 		});
 
 	}
+	
+	
 
 	private void initialDpi() {
 		AppLogger.log("initialDpi()...");
@@ -111,75 +106,28 @@ public class BasicActivity extends Activity {
 		AppLogger.log("xdpi: " + Runtime.X_DPI + " ydpi: " + Runtime.Y_DPI);
 	}
 
-	/*
-	 * private void changeCameraViewSize(float widthInCM, float heightInCM){
-	 * 
-	 * AppLogger.log("Changing camera view size to : " + widthInCM + " cm X " +
-	 * heightInCM + " cm");
-	 * 
-	 * double widthInPixels = Runtime.X_DPI * widthInCM / 2.54; double
-	 * heightInPixels = Runtime.Y_DPI * heightInCM / 2.54;
-	 * 
-	 * mCameraPreview.setViewWidth((int)widthInPixels);
-	 * mCameraPreview.setViewHeight((int)heightInPixels);
-	 * 
-	 * 
-	 * mCameraPreview.invalidate();
-	 * 
-	 * //LinearLayout frameLayout =
-	 * (LinearLayout)findViewById(R.id.root_layout);
-	 * 
-	 * ViewGroup.LayoutParams params = mCameraPreview.getLayoutParams();
-	 * params.width = (int)widthInPixels; params.height = (int)heightInPixels;
-	 * mCameraPreview.setLayoutParams(params);
-	 * 
-	 * //frameLayout.invalidate(); }
-	 */
-
-	/*
-	 * private void printScreenDimenssion() { WindowManager windowManager =
-	 * getWindowManager(); Display display = windowManager.getDefaultDisplay();
-	 * DisplayMetrics displayMetrics = new DisplayMetrics();
-	 * display.getMetrics(displayMetrics);
-	 * 
-	 * // since SDK_INT = 1; int mWidthPixels = displayMetrics.widthPixels; int
-	 * mHeightPixels = displayMetrics.heightPixels;
-	 * 
-	 * // includes window decorations (statusbar bar/menu bar) if
-	 * (Build.VERSION.SDK_INT >= 14 && Build.VERSION.SDK_INT < 17) { try {
-	 * mWidthPixels = (Integer) Display.class.getMethod("getRawWidth")
-	 * .invoke(display); mHeightPixels = (Integer) Display.class.getMethod(
-	 * "getRawHeight").invoke(display); } catch (Exception ignored) {
-	 * ignored.printStackTrace(); } }
-	 * 
-	 * // includes window decorations (statusbar bar/menu bar) if
-	 * (Build.VERSION.SDK_INT >= 17) { try { Point realSize = new Point();
-	 * Display.class.getMethod("getRealSize", Point.class).invoke( display,
-	 * realSize); mWidthPixels = realSize.x; mHeightPixels = realSize.y; } catch
-	 * (Exception ignored) { ignored.printStackTrace(); } }
-	 * 
-	 * AppLogger.log("mWidthPixels: " + mWidthPixels);
-	 * AppLogger.log("mHeightPixels: " + mHeightPixels);
-	 * 
-	 * 
-	 * double x = mWidthPixels/dm.xdpi; double y = mHeightPixels/dm.ydpi;
-	 * //double screenInches = Math.sqrt(x+y); AppLogger.log("screen width = : "
-	 * + x + " " + x * 2.54 + " cm"); AppLogger.log("screen height = : " + y +
-	 * " " + y * 2.54 + " cm");
-	 * 
-	 * }
-	 */
-
-	private void setCameraDimension(int width, int height) {
-		Camera.Parameters parameters = mCamera.getParameters();
-		parameters.setPreviewSize(width, height);
-		mCamera.setParameters(parameters);
-		mCamera.startPreview();
-	}
-
 	public void initCameraInstance() {
 		try {
 			mCamera = Camera.open(); // attempt to get a Camera instance
+			// setup camera parameter
+			Camera.Parameters parameters = mCamera.getParameters();
+			if(parameters.getSupportedFocusModes().contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)){
+				parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+			}
+			
+			mCamera.autoFocus(new Camera.AutoFocusCallback() {
+				
+				@Override
+				public void onAutoFocus(boolean success, Camera camera) {
+					// TODO Auto-generated method stub
+					if(success){
+						AppLogger.log("Auto focus success.");
+					}else{
+						AppLogger.log("Auto focus failed.");
+					}
+				}
+			});
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			AppLogger.log(e.getMessage());
