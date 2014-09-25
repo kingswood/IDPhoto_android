@@ -49,6 +49,8 @@ public final class R {
         public static final int btn_ok=0x7f0a000a;
         public static final int btn_take_photo=0x7f0a0003;
         public static final int camera_preview=0x7f0a0001;
+        public static final int current_size_detail=0x7f0a000d;
+        public static final int current_size_header=0x7f0a000c;
         public static final int layout_choose_size=0x7f0a0004;
         public static final int root_layout=0x7f0a0000;
         public static final int text_height=0x7f0a0009;
@@ -57,6 +59,7 @@ public final class R {
     public static final class layout {
         public static final int activity_basic=0x7f030000;
         public static final int activity_choosesize=0x7f030001;
+        public static final int layout_header=0x7f030002;
     }
     public static final class menu {
         public static final int basic=0x7f090000;

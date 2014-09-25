@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 public class BasicActivity extends Activity {
 
@@ -19,6 +20,9 @@ public class BasicActivity extends Activity {
 	private CameraPreview mCameraPreview = null;
 	private Button btnChooseSize = null;
 	private Button btnTakePhoto = null;
+	
+	private TextView sizeHeader = null;
+	private TextView sizeDetail = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,13 @@ public class BasicActivity extends Activity {
 		mCameraPreview = new CameraPreview(this, mCamera);
 		FrameLayout previewFrame = (FrameLayout) findViewById(R.id.camera_preview);
 		previewFrame.addView(mCameraPreview);
+		
+		// initialize text views
+		sizeHeader = (TextView)findViewById(R.id.current_size_header);
+		sizeDetail = (TextView)findViewById(R.id.current_size_detail);
+		
+		sizeHeader.setText(R.string.btn_1_inch);
+		sizeDetail.setText(R.string.btn_1_inch_2_5x3_5);
 
 		// get x and y DPI of the device
 		initialDpi();
@@ -61,6 +72,11 @@ public class BasicActivity extends Activity {
 		mCameraPreview = new CameraPreview(this, mCamera);
 		FrameLayout previewFrame = (FrameLayout) findViewById(R.id.camera_preview);
 		previewFrame.addView(mCameraPreview);
+		
+		if(Runtime.PHOTO_SIZE.getHeight() > 0){
+			sizeHeader.setText(Runtime.PHOTO_SIZE.getDesc());
+			sizeDetail.setText(Runtime.PHOTO_SIZE.getWidth() + " CM X " + Runtime.PHOTO_SIZE.getHeight() + " CM");
+		}
 	}
 
 	private void registerBtnListeners() {
