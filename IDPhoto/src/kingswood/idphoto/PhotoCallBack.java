@@ -20,8 +20,6 @@ public class PhotoCallBack implements PictureCallback {
 	@Override
 	public void onPictureTaken(byte[] data, Camera camera) {
 
-		AppLogger.log("Calling onPictureTaken method.");
-
 		File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
 		if (pictureFile == null) {
 			AppLogger

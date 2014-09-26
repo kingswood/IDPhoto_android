@@ -26,6 +26,8 @@ public class BasicActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
+		AppLogger.log("Calling BasicActivity.onCreate");
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_basic);
@@ -43,6 +45,8 @@ public class BasicActivity extends Activity {
 		sizeHeader.setText(R.string.btn_1_inch);
 		sizeDetail.setText(R.string.btn_1_inch_2_5x3_5);
 
+		initHeaderText();
+		
 		// get x and y DPI of the device
 		initialDpi();
 
@@ -51,13 +55,33 @@ public class BasicActivity extends Activity {
 
 	}
 	
+	private void initHeaderText(){
+		if(null == Runtime.HEADER_TEXT1){
+			Runtime.HEADER_TEXT1 = getString(R.string.btn_1_inch);
+		}
+		
+		if(null == Runtime.HEADER_TEXT2){
+			Runtime.HEADER_TEXT2 = getString(R.string.btn_1_inch_2_5x3_5);
+		}
+		
+	}
+	
+	
 	@Override
 	protected void onPause(){
-		AppLogger.log("calling BasicActivity.onPause() method");
 		
 		super.onPause();
 		
-		mCamera.release();
+		if (mCamera != null) {
+	        // Call stopPreview() to stop updating the preview surface.
+	        mCamera.stopPreview();
+	        mCamera.release();
+	        
+	        mCamera = null;
+	    }
+		
+		//FrameLayout previewFrame = (FrameLayout) findViewById(R.id.camera_preview);
+		//previewFrame.removeView(mCameraPreview);
 	}
 
 	@Override
@@ -66,17 +90,19 @@ public class BasicActivity extends Activity {
 		AppLogger.log("calling onResume method");
 		
 		super.onResume();
-
-		//initCameraInstance();
+		
 
 		mCameraPreview = new CameraPreview(this, mCamera);
 		FrameLayout previewFrame = (FrameLayout) findViewById(R.id.camera_preview);
 		previewFrame.addView(mCameraPreview);
 		
-		if(Runtime.PHOTO_SIZE.getHeight() > 0){
-			sizeHeader.setText(Runtime.PHOTO_SIZE.getDesc());
-			sizeDetail.setText(Runtime.PHOTO_SIZE.getWidth() + " CM X " + Runtime.PHOTO_SIZE.getHeight() + " CM");
-		}
+		initCameraInstance();
+		
+		AppLogger.log("Runtime.HEADER_TEXT1 = " + Runtime.HEADER_TEXT1);
+		AppLogger.log("Runtime.HEADER_TEXT2 = " + Runtime.HEADER_TEXT2);
+		
+		sizeHeader.setText(Runtime.HEADER_TEXT1);
+		sizeDetail.setText(Runtime.HEADER_TEXT2);
 	}
 
 	private void registerBtnListeners() {
@@ -112,14 +138,13 @@ public class BasicActivity extends Activity {
 	}
 	
 	
+	
 
 	private void initialDpi() {
-		AppLogger.log("initialDpi()...");
 		DisplayMetrics dm = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
 		Runtime.X_DPI = dm.xdpi;
 		Runtime.Y_DPI = dm.ydpi;
-		AppLogger.log("xdpi: " + Runtime.X_DPI + " ydpi: " + Runtime.Y_DPI);
 	}
 
 	public void initCameraInstance() {

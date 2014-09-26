@@ -13,4 +13,8 @@ public class Runtime {
 	public static float Y_DPI = 0.0f;
 	
 	public static PhotoSize PHOTO_SIZE = new PhotoSize();
+	
+	public static String HEADER_TEXT1 = null;
+	
+	public static String HEADER_TEXT2 = null;
 }
