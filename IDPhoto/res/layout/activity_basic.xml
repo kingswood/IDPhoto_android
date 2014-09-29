@@ -14,7 +14,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="15"
         android:background="@color/background_gray"
         android:gravity="center"
         android:orientation="vertical"
@@ -30,13 +30,15 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_margin="0dp"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:background="@color/background_gray"
         android:orientation="horizontal"
         android:padding="0dp"
         android:paddingBottom="0dp"
         android:weightSum="3" >
 
+        
+        
         <Button
             android:id="@+id/btn_choosesize"
             android:layout_width="0dp"
@@ -50,7 +52,7 @@
             android:text="@string/btn_change_size"
             tools:ignore="NestedWeights" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_take_photo"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
@@ -59,9 +61,13 @@
             android:layout_marginRight="1dp"
             android:layout_marginTop="-5dp"
             android:layout_weight="1"
+            android:contentDescription=""
+            android:src="@drawable/ic_action_camera"
             android:background="@color/background_light_gray"
-            android:text="@string/btn_take_photo" />
-
+            android:text="@string/btn_take_photo"
+            tools:ignore="ContentDescription" >
+        </ImageButton>
+        
         <Button
             android:layout_width="0dp"
             android:layout_height="fill_parent"

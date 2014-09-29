@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:layout_weight="3"
+        android:layout_weight="7"
         android:orientation="horizontal"
         android:layout_gravity="center_vertical" >
 
@@ -18,9 +18,9 @@
             android:id="@+id/current_size_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:textSize="20sp"
-            android:gravity="bottom"
+            android:paddingLeft="10dp"
+            android:textSize="15sp"
+            android:layout_gravity="center"
             tools:ignore="NestedWeights" >
         </TextView>
 
@@ -28,29 +28,10 @@
             android:id="@+id/current_size_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:paddingLeft="15dp"
-            android:textSize="12sp" >
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:textSize="15sp" >
         </TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical"
-        >
-
-        <ImageButton
-            android:id="@+id/btn_switch_cemera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription=""
-            android:src="@drawable/ic_action_repeat"
-            android:background="@null"
-            tools:ignore="ContentDescription" >
-        </ImageButton>
     </LinearLayout>
 
     <LinearLayout
