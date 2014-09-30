@@ -8,14 +8,7 @@
     android:paddingBottom="0dp"
     tools:context=".BasicActivity" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@color/background_dark_gray"
-        android:orientation="vertical"
-        android:padding="0dp" >
-    </LinearLayout>
+    <include layout="@layout/layout_header" />
 
     <LinearLayout
         android:id="@+id/layout_choose_size"
@@ -27,110 +20,23 @@
         android:orientation="vertical"
         android:padding="0dp" >
 
-        <Button
-            android:id="@+id/btn_1inch"
+        <ScrollView
+            android:id="@+id/scroll_view"
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:background="@color/gray_99Transparent"
-            android:textColor="@color/white"
-            android:layout_marginBottom="1dp"
-            tools:ignore="NestedWeights" 
-            />
-
-        <Button
-            android:id="@+id/btn_2inch"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:background="@color/gray_99Transparent"
-            android:textColor="@color/white"
-            android:layout_marginBottom="1dp"
-            tools:ignore="NestedWeights" />
-
-        <Button
-            android:id="@+id/btn_customize_size"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:background="@color/gray_99Transparent"
-            android:textColor="@color/white"
-            android:layout_marginBottom="1dp"
-            tools:ignore="NestedWeights" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="0dp" >
-
-            <EditText
-                android:id="@+id/text_width"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="5"
-                android:hint="@string/width"
-                android:inputType="numberDecimal"
-                android:gravity="center" >
-            </EditText>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="@string/x" 
-                android:gravity="center">
-            </TextView>
-
-            <EditText
-                android:id="@+id/text_height"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="5"
-                android:hint="@string/height"
-                android:inputType="numberDecimal"
-                android:gravity="center" >
-            </EditText>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_margin="0dp"
-        android:layout_weight="3"
-        android:background="@color/background_gray"
-        android:orientation="horizontal"
-        android:padding="0dp"
-        android:paddingBottom="0dp"
-        android:weightSum="2" >
-
-        <Button
-            android:id="@+id/btn_ok"
-            android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_marginBottom="-5dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="-5dp"
-            android:layout_weight="1"
-            android:background="@color/background_light_gray"
-            android:text="@string/btn_ok"
-            tools:ignore="NestedWeights" />
+            android:background="@color/background_gray" >
 
-        <Button
-            android:id="@+id/btn_cancel"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_marginBottom="-5dp"
-            android:layout_marginLeft="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginTop="-5dp"
-            android:layout_weight="1"
-            android:background="@color/background_light_gray"
-            android:text="@string/btn_cancel" />
+            <LinearLayout
+                android:id="@+id/size_btn_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="0dp" >
+            </LinearLayout>
+        </ScrollView>
+
+        
     </LinearLayout>
 
 </LinearLayout>
+

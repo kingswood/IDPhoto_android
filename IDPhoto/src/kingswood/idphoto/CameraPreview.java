@@ -5,11 +5,9 @@ import java.util.List;
 
 import kingswood.idphoto.log.AppLogger;
 import kingswood.idphoto.util.DimensionConvertor;
-
 import android.content.Context;
 import android.hardware.Camera;
 import android.hardware.Camera.Size;
-import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -34,18 +32,20 @@ public class CameraPreview extends SurfaceView implements
 		mHolder = getHolder();
 		mHolder.addCallback(this);
 		// deprecated setting, but required on Android versions prior to 3.0
-		mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+		//mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 	}
+	
+	
 
 	public void surfaceCreated(SurfaceHolder holder) {
 		// The Surface has been created, now tell the camera where to draw the
 		// preview.
+		
+		AppLogger.log("calling surfaceCreated");
+		
 		try {
 			
-			AppLogger.log("calling surfaceCreated method");
-			
-			mCamera.setDisplayOrientation(90);
-			
+			mCamera.setDisplayOrientation(0);
 			
 			Camera.Parameters parameters = mCamera.getParameters();
 			parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
@@ -54,13 +54,17 @@ public class CameraPreview extends SurfaceView implements
 			
 			mCamera.setPreviewDisplay(holder);
 			mCamera.startPreview();
+			
 		} catch (IOException e) {
+			e.printStackTrace();
 			AppLogger.log("Error setting camera preview: " + e.getMessage());
 		}
 	}
 
 	public void surfaceDestroyed(SurfaceHolder holder) {
-		// empty. Take care of releasing the Camera preview in your activity.
+		
+		AppLogger.log("calling surfaceDestroyed");
+		
 	}
 
 	public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
@@ -109,17 +113,6 @@ public class CameraPreview extends SurfaceView implements
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		
-		AppLogger.log("Calling onMeasure method.");
-		
-		if(null == mCamera){
-			try {
-				mCamera = Camera.open(); // attempt to get a Camera instance
-			} catch (Exception e) {
-				e.printStackTrace();
-				AppLogger.log(e.getMessage());
-				// Camera is not available (in use or does not exist)
-			}
-		}
 		
 		mSupportedPreviewSizes = mCamera.getParameters().getSupportedPreviewSizes();
 		
@@ -135,8 +128,6 @@ public class CameraPreview extends SurfaceView implements
 					height);
 		}
 		
-		AppLogger.log("mPreviewSize.width: " + mPreviewSize.width);
-		AppLogger.log("mPreviewSize.height: " + mPreviewSize.height);
 		
 		if(Runtime.CAMERA_PREVIEW_WIDTH > 0 && Runtime.CAMERA_PREVIEW_HEIGHT > 0){
 			
@@ -147,7 +138,6 @@ public class CameraPreview extends SurfaceView implements
 			
 		}
 		
-		//setMeasuredDimension(viewWidth, viewHeight);
 	}
 	
 	
